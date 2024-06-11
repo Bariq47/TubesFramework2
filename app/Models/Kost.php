@@ -10,8 +10,10 @@ class Kost extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'address', 'description'
+        'name', 'address', 'description','image'
     ];
+
+
 
     public function rooms()
     {

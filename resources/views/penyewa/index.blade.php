@@ -15,9 +15,8 @@
         <h4>Penyewa Dashboard</h4>
         <ul>
             <li><a href="">Search Kos-Kosan</a></li>
-            <li><a href="">View Bookings</a></li>
-            <li><a href="">Make Payments</a></li>
-            <li><a href="">Write Reviews</a></li>
+  
+
         </ul>
     </div>
     @vite('resources/js/app.js')
