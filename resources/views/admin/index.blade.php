@@ -25,6 +25,12 @@
     <div class="container">
         <h1>Daftar Kost</h1>
         <a href="{{ route('dashboard-admin.create') }}" class="btn btn-primary">Tambah Kost</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        <a href="{{ route('logout') }}" class="btn btn-primary"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout
+        </a>
         <table class="table mt-3">
             <thead>
                 <tr>
