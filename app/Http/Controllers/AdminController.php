@@ -6,6 +6,8 @@ use App\Models\Kost;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use PDF;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -41,7 +43,7 @@ class AdminController extends Controller
             'address' => 'required|string',
             'description' => 'required|string',
             'image' => 'required',
-            'room_name' => 'required|string|max:255', 
+            'room_name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'availability' => 'required|boolean',
         ], $messages);
@@ -60,8 +62,6 @@ class AdminController extends Controller
             // Store File
             $file->store('public/files/DocumentPhotoKost');
             $file->move('resources/images/photoKost', $original_photoname);
-
-
         }
 
         // ELOQUENT
@@ -179,6 +179,16 @@ class AdminController extends Controller
     {
         $kost = Kost::find($id);
         $kost->delete();
-        return redirect()->route('dashboard-admin.index')->with('success', 'Kost deleted successfully.');
+        Alert::success('Hapus Berhasil', 'Data Sudah Terhapus.');
+        return redirect()->route('dashboard-admin.index');
     }
+
+
+    public function downloadPDF($id)
+    {
+        $kost = Kost::with('rooms')->find($id);
+        $pdf = PDF::loadView('admin.pdf', compact('kost'));
+        return $pdf->download('kost_details.pdf');
+    }
+
 }

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     @vite('resources/sass/app.scss')
+    @include('sweetalert::alert')
+    @stack('scripts')
 </head>
 
 <body>
@@ -39,9 +41,10 @@
                     <th>Deskripsi</th>
                     <th>Harga</th>
                     <th>Ketersediaan</th>
-                    <th>Deskripsi</th>
+                    <th>Nama Pemilik</th>
                     <th>Gambar</th>
                     <th>Aksi</th>
+                    <th>Download Data</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,6 +75,12 @@
                                     <button type="submit" class="btn btn-danger">Hapus</button>
                                 </form>
                             </td>
+                            <td>
+                                <li class="list-inline-item">
+                                    <a href="{{ route('dashboard-admin.exportPdf', $kost->id) }}"
+                                        class="btn btn-primary">Download PDF</a>
+                                </li>
+                            </td>
                         </tr>
                     @endforeach
                 @endforeach
@@ -80,5 +89,30 @@
     </div>
     @vite('resources/js/app.js')
 </body>
+@push('scripts')
+    <script type="module">
+        $(document).ready(function() {
+
+            ...
+            $(".datatable").on("click", ".btn-delete", function(e) {
+                e.preventDefault();
+                var form = $(this).closest("form");
+                var name = $(this).data("name");
+                Swal.fire({
+                    title: "Are you sure want to delete\n" + name + "?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "bg-primary",
+                    confirmButtonText: "Yes, delete it!",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
+@endpush
 
 </html>

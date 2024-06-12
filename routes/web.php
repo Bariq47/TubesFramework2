@@ -29,6 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => 'role:admin'], function () {
     Route::resource('dashboard-admin', AdminController::class);
+    Route::get('exportPdf{id}', [AdminController::class, 'downloadPDF'])->name('dashboard-admin.exportPdf');
+
 });
 
 Route::group(['middleware' => 'role:penyewa'], function () {
