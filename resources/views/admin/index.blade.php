@@ -33,8 +33,8 @@
                     <th>Deskripsi</th>
                     <th>Harga</th>
                     <th>Ketersediaan</th>
-                    <th>Gambar</th>
                     <th>Deskripsi</th>
+                    <th>Gambar</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -47,14 +47,16 @@
                             <td>{{ $kost->description }}</td>
                             <td>{{ $room->price }}</td>
                             <td>{{ $room->availability ? 'Tersedia' : 'Tidak Tersedia' }}</td>
-                            <td>
-                                @if ($kost->encrypted_photoname)
-                                    <img src="{{ Vite::asset('public/files/DocumentPhotoKost' . $kost->original_photoname) }}" alt="{{ $kost->name }}" style="width: 100px; height: auto;">
-                                    @endif
-                            </td>
                             <td>{{ $room->description }}</td>
                             <td>
-                                <a href="{{ route('dashboard-admin.edit', $kost->id) }}" class="btn btn-warning">Edit</a>
+                                @if ($kost->encrypted_photoname)
+                                    <img src="{{ asset('storage/files/DocumentPhotoKost/' . $kost->encrypted_photoname) }}"
+                                        alt="{{ $kost->name }}" style="width: 100px; height: auto;">
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('dashboard-admin.edit', $kost->id) }}"
+                                    class="btn btn-warning">Edit</a>
                                 {{-- <a href="{{ route('dashboard-admin.edit', ['kost' => $kost->id]) }}" class="btn btn-warning">Edit</a> --}}
 
                                 <form action="{{ route('dashboard-admin.destroy', $kost->id) }}" method="POST"
