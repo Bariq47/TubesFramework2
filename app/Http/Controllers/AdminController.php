@@ -199,4 +199,10 @@ class AdminController extends Controller
         $user = User::all();
         return view('admin.daftarUser', compact('user'));
     }
+
+
+    public function getData(Request $request)
+    {
+
+    }
 }

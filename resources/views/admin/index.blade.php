@@ -32,7 +32,7 @@
         <a href="{{ route('logout') }}" class="btn btn-primary"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout
         </a>
-        <table class="table mt-3">
+        <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="tableKos">
             <thead>
                 <tr>
                     <th>Nama</th>
@@ -88,8 +88,76 @@
     </div>
     @vite('resources/js/app.js')
     @include('sweetalert::alert')
+    @push('scripts')
+        <script type="module">
+            $(document).ready(function() {
+                $('#tableKos').DataTable();
+            });
+        </script>
+    @endpush
     @stack('scripts')
+
+
+
+    {{-- @push('scripts')
+        <script type="module">
+            $(document).ready(function() {
+                $("#employeeTable").DataTable({
+                    serverSide: true,
+                    processing: true,
+                    ajax: "/getEmployees",
+                    columns: [{
+                            data: "id",
+                            name: "id",
+                            visible: false
+                        },
+                        {
+                            data: "DT_RowIndex",
+                            name: "DT_RowIndex",
+                            orderable: false,
+                            searchable: false
+                        },
+                        {
+                            data: "firstname",
+                            name: "firstname"
+                        },
+                        {
+                            data: "lastname",
+                            name: "lastname"
+                        },
+                        {
+                            data: "email",
+                            name: "email"
+                        },
+                        {
+                            data: "age",
+                            name: "age"
+                        },
+                        {
+                            data: "position.name",
+                            name: "position.name"
+                        },
+                        {
+                            data: "actions",
+                            name: "actions",
+                            orderable: false,
+                            searchable: false
+                        },
+                    ],
+                    order: [
+                        [0, "desc"]
+                    ],
+                    lengthMenu: [
+                        [10, 25, 50, 100, -1],
+                        [10, 25, 50, 100, "All"],
+                    ],
+                });
+            });
+        </script>
+    @endpush --}}
 </body>
+
+
 {{-- @push('scripts')
     <script type="module">
         $(document).ready(function() {
