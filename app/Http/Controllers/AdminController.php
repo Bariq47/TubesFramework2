@@ -200,6 +200,12 @@ class AdminController extends Controller
         return view('admin.daftarUser', compact('user'));
     }
 
+    public function exportUser( )
+    {
+        $user = User::all();
+        $pdf = PDF::loadView('admin.exportUserPdf', compact('user'));
+        return $pdf->download('user.pdf');
+    }
 
     public function getData(Request $request)
     {

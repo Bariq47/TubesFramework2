@@ -31,6 +31,7 @@ Route::group(['middleware' => 'role:admin'], function () {
     Route::resource('dashboard-admin', AdminController::class);
     Route::get('exportPdf{id}', [AdminController::class, 'downloadPDF'])->name('dashboard-admin.exportPdf');
     Route::get('daftarUser', [AdminController::class, 'showUser'])->name('dashboard-admin.daftarUser');
+    Route::get('exportUser', [AdminController::class, 'exportUser'])->name('dashboard-admin.exportUser');
     // Route::get('getKost', [AdminController::class, 'getData'])->name('dashboard-admin.getData');
 
 
