@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homee');
 });
 Route::get('homee', [HomeeController::class, 'index'])->name('home');
 Auth::routes();
@@ -30,6 +30,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'role:admin'], function () {
     Route::resource('dashboard-admin', AdminController::class);
     Route::get('exportPdf{id}', [AdminController::class, 'downloadPDF'])->name('dashboard-admin.exportPdf');
+    Route::get('daftarUser', [AdminController::class, 'showUser'])->name('dashboard-admin.daftarUser');
 
 });
 

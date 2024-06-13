@@ -10,6 +10,7 @@
 
 <body>
     <div class="container">
+        <a href="{{ route('dashboard-admin.index') }}" class="btn btn-primary">Kembali</a>
         <h1>Tambah Kost</h1>
         <form action="{{ route('dashboard-admin.store') }}" method="POST" enctype="multipart/form-data">
             @csrf

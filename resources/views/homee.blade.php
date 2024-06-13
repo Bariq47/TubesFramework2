@@ -19,14 +19,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <hr class="d-lg-none text-white-50">
-                <ul class="navbar-nav flex-row flex-wrap">
+                {{-- <ul class="navbar-nav flex-row flex-wrap">
                     <li class="nav-item col-2 col-md-auto"><a href="" class="nav-link active">Home</a></li>
                     <li class="nav-item col-2 col-md-auto"><a href="" class="nav-link">Cari Kost</a></li>
                     <li class="nav-item col-2 col-md-auto"><a href=""
                             class="nav-link">dashboard admin</a></li>
                     <li class="nav-item col-2 col-md-auto"><a href=""
                             class="nav-link">dashboard penyewa</a></li>
-                </ul>
+                </ul> --}}
                 <hr class="d-lg-none text-white-50">
                 <a href="{{ route('login') }}" class="btn btn-outline-light my-2 ms-md-auto">Login</a>
                 <a href="{{ route('register') }}" class="btn btn-outline-light my-2 ms-md-2">Register</a>

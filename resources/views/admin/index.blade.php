@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     @vite('resources/sass/app.scss')
-    @include('sweetalert::alert')
-    @stack('scripts')
 </head>
 
 <body>
@@ -27,6 +25,7 @@
     <div class="container">
         <h1>Daftar Kost</h1>
         <a href="{{ route('dashboard-admin.create') }}" class="btn btn-primary">Tambah Kost</a>
+        <a href="{{ route('dashboard-admin.daftarUser') }}" class="btn btn-primary">Lihat Daftar User</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
@@ -88,8 +87,10 @@
         </table>
     </div>
     @vite('resources/js/app.js')
+    @include('sweetalert::alert')
+    @stack('scripts')
 </body>
-@push('scripts')
+{{-- @push('scripts')
     <script type="module">
         $(document).ready(function() {
 
@@ -113,6 +114,6 @@
             });
         });
     </script>
-@endpush
+@endpush --}}
 
 </html>

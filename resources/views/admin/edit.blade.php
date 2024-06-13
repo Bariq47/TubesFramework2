@@ -10,6 +10,7 @@
 
 <body>
     <div class="container">
+        <a href="{{ route('dashboard-admin.index') }}" class="btn btn-primary">Kembali</a>
         <h1>Edit Kost</h1>
         <form action="{{ route('dashboard-admin.update', $kost->id) }}" method="POST" enctype="multipart/form-data">
             @csrf

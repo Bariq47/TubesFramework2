@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kost;
 use App\Models\Room;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PDF;
@@ -16,6 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
+
         $kosts = Kost::with('rooms')->get();
         return view('admin.index', compact('kosts'));
     }
@@ -86,8 +88,9 @@ class AdminController extends Controller
             $room->kost_id = $kost->id;
             $room->save();
         }
+        Alert::success('Berhasil Menambahkan', 'Data Kos Berhasil Ditambahkan.');
 
-        return redirect()->route('dashboard-admin.index')->with('success', 'Kost created successfully.');
+        return redirect()->route('dashboard-admin.index');
     }
 
 
@@ -167,8 +170,8 @@ class AdminController extends Controller
         $room->availability = $request->availability;
         $room->description = $request->room_description;
         $room->save();
-
-        return redirect()->route('dashboard-admin.index')->with('success', 'Kost updated successfully.');
+        Alert::success('Edit Berhasil', 'Data Kos Berhasil di Edit.');
+        return redirect()->route('dashboard-admin.index');
     }
 
 
@@ -191,4 +194,9 @@ class AdminController extends Controller
         return $pdf->download('kost_details.pdf');
     }
 
+    public function showUser()
+    {
+        $user = User::all();
+        return view('admin.daftarUser', compact('user'));
+    }
 }
