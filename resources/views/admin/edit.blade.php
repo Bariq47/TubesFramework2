@@ -5,7 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    @vite('resources/sass/app.scss')
+
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba (0,0,0,0.1);
+            border-radius: 8px;
+        }
+        </style>
+         @vite('resources/sass/app.scss')
 </head>
 
 <body>
