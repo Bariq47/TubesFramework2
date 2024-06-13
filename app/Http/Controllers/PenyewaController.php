@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kost;
 use Illuminate\Http\Request;
 
 class PenyewaController extends Controller
@@ -11,9 +12,9 @@ class PenyewaController extends Controller
      */
     public function index()
     {
-        $pageTitle = 'Dashboard Penyewa';
 
-        return view('penyewa.index', ['pageTitle' => $pageTitle]);
+        $kosts = Kost::with('rooms')->get();
+        return view('penyewa.index', compact('kosts'));
     }
 
     /**

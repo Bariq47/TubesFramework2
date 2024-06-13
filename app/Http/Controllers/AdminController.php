@@ -107,7 +107,7 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        $kost = Kost::with('rooms')->findOrFail($id);
+        $kost = Kost::with('rooms')->find($id);
         return view('admin.edit', compact('kost'));
     }
 
